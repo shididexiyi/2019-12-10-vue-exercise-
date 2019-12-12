@@ -1,0 +1,10 @@
+.el-container {
+    height: 100%;
+}
+    .el-header {
+        color: #C0C4CC;
+        background-color:#303133;
+    }
+    .el-aside {
+        background-color: #606266;
+    }

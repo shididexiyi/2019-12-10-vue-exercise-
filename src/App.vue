@@ -1,28 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HostWeb/>
   </div>
 </template>
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HostWeb from './components/HostWeb.vue'
+import './common/element.css'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HostWeb
   }
 }
 </script>
 
-<style lang = "less">
-#app {
-  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
-  font-family: 'PS';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} 
+<style>
+
 </style>
