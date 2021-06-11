@@ -1,17 +1,18 @@
 <template lang="pug">
     div(id="app")
-        el-container
-            el-header
-                headBox
-            el-container.mainBox
-                el-aside(width="200px")
-                    asideList
-                el-main
-                    router-view
+        router-view
+        //- el-container
+        //-     el-header
+        //-         headBox
+        //-     el-container.mainBox
+        //-         el-aside(width="200px")
+        //-             asideList
+        //-         el-main
+        //-             router-view
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import headBox from './components/headBox.vue';
 import asideList from './components/asideList.vue';
 @Component({
@@ -20,7 +21,8 @@ import asideList from './components/asideList.vue';
     asideList
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+}
 </script>
 
 <style lang="sass">

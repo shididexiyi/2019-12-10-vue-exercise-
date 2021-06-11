@@ -1,61 +1,64 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter, { Route,RawLocation } from 'vue-router'
 //import HelloWorld from '@/components/HelloWorld'
-import AAA from '../components/a.vue'
-import BBB from '../components/b.vue'
-import CCC from '../components/c.vue'
-import DDD from '../components/d.vue'
-import EEE from '../components/this.vue'
-import FFF from '../components/identify.vue'
-import GGG from '../components/enum.vue'
-import App from '../App.vue'
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(Router)
 
-export default new Router({
+import App from '../App.vue'
+import SM from './sm'
+import home from '@/views/home.vue'
+import loginComponent from '@/views/loginComponent.vue'
+import NotFound from '@/views/NotFound.vue'
+import 'element-ui/lib/theme-chalk/index.css';
+import { ErrorHandler } from 'vue-router/types/router'
+Vue.use(VueRouter)
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location : RawLocation ) {
+  return ( originalPush.call(this, location) as any  ).catch( ( err : ErrorHandler) => err)
+}
+const routes = SM
+
+const router = new VueRouter({
     routes: [
         {
             path: '/',
             name: 'App',
             component: App,
+            redirect: {name: 'LoginPage'},
             children: [
                 {
-                    path: '/AAA',
-                    name: 'AAA',
-                    component: AAA,
+                    path: 'home',
+                    name: 'Home',
+                    component: home,
+                    children: routes
                 },
                 {
-                    path: '/BBB',
-                    name: 'BBB',
-                    component: BBB,
-                },
-                {
-                    path: '/CCC',
-                    name: 'CCC',
-                    component: CCC,
-                },
-                {
-                    path: '/DDD',
-                    name: 'DDD',
-                    component: DDD,
-                },
-                {
-                    path: '/EEE',
-                    name: 'EEE',
-                    component: EEE,
-                },
-                {
-                    path: '/FFF',
-                    name: 'FFF',
-                    component: FFF,
-                },
-                {
-                    path: '/GGG',
-                    name: 'GGG',
-                    component: GGG
+                    path: 'login',
+                    name: 'LoginPage',
+                    component: loginComponent,
                 }
             ]
+        },
+        {
+            path: '/404',
+            name: 'NotFound',
+            component: NotFound,
+        },
+        {
+            path: '*',
+            redirect: {
+                name: 'NotFound'
+            }
         }
     ]
 })
 
+
+
+
+
+router.beforeEach((to,from,next) => {
+    // console.log(to);
+    // console.log(from);
+    next()
+})
+
+export default router

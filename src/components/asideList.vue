@@ -1,6 +1,7 @@
 <template lang="pug">
     el-menu(
-        default-active="2"
+        :default-active="defaultActive"
+        :default-openeds.sync="defaultOpen"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
@@ -12,25 +13,28 @@
     ) 
         el-submenu(index="1")
             template(slot="title") A
-            el-menu-item(index="AAA") A1-1
-        el-submenu(index="2")
-            template(slot="title") B
-            el-menu-item(index="BBB") B1-1
-        el-submenu(index="3")
-            template(slot="title") C
-            el-menu-item(index="CCC") C1-1
-        el-submenu(index="4")
-            template(slot="title") D
-            el-menu-item(index="DDD") D1-1
-        el-submenu(index="5")
-            template(slot="title") E
-            el-menu-item(index="EEE") E1-1
-        el-submenu(index="6")
-            template(slot="title") F
-            el-menu-item(index="FFF") F1-1
-        el-submenu(index="7")
-            template(slot="title") G
-            el-menu-item(index="GGG") G1-1
+            el-menu-item(index="/home/AAA") A1-1
+        //- el-submenu(index="2")
+        //-     template(slot="title") B
+        //-     el-menu-item(index="/BBB") B1-1
+        //- el-submenu(index="3")
+        //-     template(slot="title") C
+        //-     el-menu-item(index="/CCC") C1-1
+        //- el-submenu(index="4")
+        //-     template(slot="title") D
+        //-     el-menu-item(index="/DDD") D1-1
+        //- el-submenu(index="5")
+        //-     template(slot="title") E
+        //-     el-menu-item(index="/EEE") E1-1
+        //- el-submenu(index="6")
+        //-     template(slot="title") F
+        //-     el-menu-item(index="/FFF") F1-1
+        //- el-submenu(index="7")
+        //-     template(slot="title") G
+        //-     el-menu-item(index="/GGG") G1-1
+        //- el-submenu(index="8")
+        //-     template(slot="title") DOM
+        //-     el-menu-item(index="/DOM") DOM1-1
 
 </template>
 
@@ -39,7 +43,8 @@ import Vue from 'vue'
 export default Vue.extend({
     data(){
         return {
-
+            defaultActive: '/AAA',
+            defaultOpen: []
         }
     },
     methods: {

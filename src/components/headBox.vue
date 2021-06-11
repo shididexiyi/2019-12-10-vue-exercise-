@@ -3,7 +3,7 @@
         .header-title-group
             i(class="el-icon-eleme")
             |Element-Ui
-            el-link(href="/home" type="info") 控制台主页
+            el-link(href="/" type="info") 控制台主页
         .header-object-group
             el-menu(
                 :default-active="activeIndex" 
