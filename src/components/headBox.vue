@@ -27,7 +27,7 @@ import Vue from 'vue';
 export default Vue.extend({
     data(){
         return {
-            activeIndex: "2"
+            activeIndex: ""
         }
     }
 })

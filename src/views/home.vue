@@ -3,9 +3,10 @@
         el-header
             headBox
         el-container.mainBox
-            el-aside(width="200px")
+            el-aside(:class="{'el-aside-width': !showornot}" width="200px")
                 asideList
-            el-main
+            i(class="el-icon-s-fold icon-color" @click="toggleAside") 
+            el-main(:class="{'el-main-aside-padding': !showornot}")
                 router-view
 </template>
 
@@ -28,6 +29,13 @@ export default Vue.extend({
     },
     data(){
         return {
+            
+            showornot: true
+        }
+    },
+    methods: {
+        toggleAside(){
+            this.showornot=!this.showornot
         }
     },
     components: {
@@ -46,14 +54,35 @@ export default Vue.extend({
         z-index: 999
     .el-container
         height: 100%
+
         .el-aside
             padding-top: 60px
             position: fixed
             height: 100%
             .el-menu
                 height: 100%
+
+        .el-aside-width
+            transform: translate(-200px,0)
+            transition: width .8s ease
+            width: 200px
+
+
+        .icon-color
+            color: red
+            position: absolute
+            left: 184px
+            top: 50%
+        .icon-color:hover
+            cursor: pointer
+
+
+        
         .el-main
             overflow: visible
             padding-top: 60px
-            padding-left: 200px
+        .el-main-aside-padding
+            // transform: translate(-200px,0)
+            transition: padding-left .8s
+            padding-left: 0px
 </style>

@@ -32,8 +32,6 @@ export default Vue.extend({
             this.tableRender()
             const myTruck: Truck = { vType: "truck", capacity: 9.5 };
             this.evaluatePrice(myTruck);
-            
-            
     },
     methods: {
         evaluatePrice(vehicle: Vehicle) : number{
@@ -53,7 +51,6 @@ export default Vue.extend({
             console.log(this.array);
         }
     }
-    
 })
 
 interface IData {

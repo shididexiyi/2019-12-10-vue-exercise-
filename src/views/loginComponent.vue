@@ -34,7 +34,11 @@ export default Vue.extend({
     },
     methods: {
         onSubmit(){
-            request.query('http://localhost:8080/api/login','get',{username: 'ypc1231',password: '123456'})
+            request.query('http://localhost:8080/api/login','get',{username: 'ypc1231',password: '123456'}).then(data => {
+                this.$router.push({
+                    name: 'Home'
+                })
+            })
         },
         onRegister(){
 
